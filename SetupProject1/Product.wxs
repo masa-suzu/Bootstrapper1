@@ -16,8 +16,18 @@
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
     <UIRef Id="WixUI_Minimal" />
-	</Product>
+    <Binary Id='CustomActionBinary'
+            SourceFile='$(var.CustomAction1.TargetDir)$(var.CustomAction1.TargetName).CA.dll' />
+    <CustomAction Id='CustomActionId' 
+                  BinaryKey='CustomActionBinary'
+                  DllEntry='CustomAction1' Execute="deferred" HideTarget="yes" Return="check"/>
 
+    <InstallExecuteSequence>
+      <!--We want to call the custom action before the install finalizes-->
+      <Custom Action='CustomActionId' Before='InstallFinalize'/>
+    </InstallExecuteSequence>
+  
+	</Product>
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
