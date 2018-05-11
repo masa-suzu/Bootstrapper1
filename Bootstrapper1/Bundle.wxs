@@ -8,7 +8,7 @@
 
 		<Chain>
 			<!-- TODO: Define the list of chained packages. -->
-			 <MsiPackage SourceFile="..\SetupProject1\bin\Debug\SetupProject1.msi"
+			 <MsiPackage SourceFile="..\SetupProject1\bin\Debug\ja-jp\SetupProject1.msi"
                    Permanent="no"
                    ForcePerMachine="yes"
                    Vital="yes"

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*" 
-           Name="SetupProject1" 
+           Name="!(loc.Message_Language)"
            Language="1033" 
            Version="1.0.0.0" 
-           Manufacturer="demo" 
+           Manufacturer="demo"
            UpgradeCode="addd23f3-8035-4401-bc14-4bb3383c208c">
-    <Package InstallerVersion="100" Compressed="yes" InstallScope="perMachine">
-    </Package>
-
+    <Package InstallerVersion="100" 
+             Compressed="yes" 
+             InstallScope="perMachine"/>
+    <WixVariable Id="WixUILicenseRtf" Value="Resources\License.rtf" />
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes"/>
-
 		<Feature Id="ProductFeature" Title="SetupProject1" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
     <UIRef Id="WixUI_Minimal" />
+    <UIRef Id="WixUI_ErrorProgressText" />
     <Binary Id='CustomActionBinary'
             SourceFile='$(var.CustomAction1.TargetDir)$(var.CustomAction1.TargetName).CA.dll' />
     <CustomAction Id='CustomActionId' 
